@@ -5,7 +5,7 @@ This is a sample Spring Boot application demonstrating the integration of all Fl
 
 ## Prerequisites
 
-- Java 17 or later
+- Java 21 or later
 - Maven 3.6.x or later
 
 ## Getting Started
