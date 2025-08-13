@@ -77,4 +77,35 @@
     </plugins>
   </build>
 
+  <repositories>
+    <repository>
+      <id>flowave-bpm-platform</id>
+      <url>https://maven.pkg.github.com/finos/flowave-bpm-platform</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>flowave-bpm-release-parent</id>
+      <url>https://maven.pkg.github.com/finos/flowave-bpm-release-parent</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>flowave-release-parent</id>
+      <url>https://maven.pkg.github.com/finos/flowave-release-parent</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>flowave-feel-scala</id>
+      <url>https://maven.pkg.github.com/finos/flowave-feel-scala</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+
 </project>
