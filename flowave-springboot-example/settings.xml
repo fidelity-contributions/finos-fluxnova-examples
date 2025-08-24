@@ -2,6 +2,11 @@
           xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
     <servers>
         <server>
+            <id>flowave-examples</id>
+            <username>${env.GITHUB_ACTOR}</username>
+            <password>${env.GH_TOKEN}</password>
+        </server>
+        <server>
             <id>flowave-feel-scala</id>
             <username>${env.GITHUB_ACTOR}</username>
             <password>${env.GH_TOKEN}</password>
