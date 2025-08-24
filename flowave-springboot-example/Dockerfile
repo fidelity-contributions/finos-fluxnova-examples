@@ -10,7 +10,7 @@ WORKDIR /flowave
 RUN yum install -y tzdata jq curl bash
 
 # Copies the Spring Boot fat JAR into the working directory
-COPY target/flowave-springboot-example-*.jar flowave.jar
+COPY flowave-springboot-example/target/flowave-springboot-example-*.jar flowave.jar
 
 # Expose port
 EXPOSE 8080
