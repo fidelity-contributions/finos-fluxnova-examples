@@ -7,7 +7,7 @@ ENV JAVA_HOME=/usr/lib/jvm/java-21-amazon-corretto \
 WORKDIR /app
 
 # Copy only the jar file from the build context
-COPY target/fluxnova-springboot-example-*.jar fluxnova.jar
+COPY fluxnova-springboot-example/target/fluxnova-springboot-example-*.jar fluxnova.jar
 
 # Final minimal image
 FROM amazoncorretto:21
