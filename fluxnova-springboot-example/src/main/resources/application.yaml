@@ -14,8 +14,8 @@ fluxnova:
       enabled: false
     plugin:
       script-preprocessing:
-        enabled: true
-        enable-default-camunda-to-fluxnova-preprocessor: true
+        enableEnginePlugin: true
+        defaultCamundaToFluxnovaPreprocessorEnabled: true
 fluxnova.bpm.admin-user:
   id: demo
   password: demo
