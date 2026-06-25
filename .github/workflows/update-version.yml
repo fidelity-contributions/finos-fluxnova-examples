@@ -38,20 +38,24 @@ jobs:
 
       - name: Create release branch
         run: |
-          BRANCH="release/${{ env.VERSION }}"
-          git checkout -b $BRANCH
+          git checkout -b release/${{ env.VERSION }}
 
-      - name: Update pom.xml
+      - name: Update pom.xml versions
         run: |
           VERSION=${{ env.VERSION }}
 
           echo "Updating versions to $VERSION"
+          mvn -f fluxnova-springboot-example/pom.xml versions:set \
+           -DnewVersion=$VERSION
 
-          # Update <version>
-          sed -i "0,/<version>.*<\/version>/s//<version>${VERSION}<\/version>/" fluxnova-springboot-example/pom.xml
+          mvn -f fluxnova-springboot-example/pom.xml versions:set-property \
+            -Dproperty=fluxnova.version \
+            -DnewVersion=$VERSION
 
-          # Update <fluxnova.version>
-          sed -i "s/<fluxnova.version>.*<\/fluxnova.version>/<fluxnova.version>${VERSION}<\/fluxnova.version>/" fluxnova-springboot-example/pom.xml
+      - name: Verify changes
+        run: |
+          echo "===== git diff ====="
+          git diff
 
       - name: Commit changes
         run: |
