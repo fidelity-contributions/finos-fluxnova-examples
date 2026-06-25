@@ -35,35 +35,27 @@ jobs:
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          ref: main
 
-      - name: Create release branch
-        run: |
-          BRANCH="release/${{ env.VERSION }}"
-          git checkout -b $BRANCH
-
-      - name: Update pom.xml
+      - name: Update pom.xml versions
         run: |
           VERSION=${{ env.VERSION }}
 
           echo "Updating versions to $VERSION"
+          mvn -f fluxnova-springboot-example/pom.xml versions:set \
+           -DnewVersion=$VERSION \
+           -DprocessAllModules=true \
+           -DgenerateBackupPoms=false
 
-          # Update <version>
-          sed -i "0,/<version>.*<\/version>/s//<version>${VERSION}<\/version>/" pom.xml
+          mvn -f fluxnova-springboot-example/pom.xml versions:set-property \
+            -Dproperty=fluxnova.version \
+            -DnewVersion=$VERSION \
+            -DgenerateBackupPoms=false
 
-          # Update <fluxnova.version>
-          sed -i "s/<fluxnova.version>.*<\/fluxnova.version>/<fluxnova.version>${VERSION}<\/fluxnova.version>/" pom.xml
-
-      - name: Commit changes
+      - name: Verify changes
         run: |
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
-
-          git add pom.xml
-          git commit -m "Update version to ${{ env.VERSION }}"
-
-      - name: Push branch
-        run: |
-          git push origin release/${{ env.VERSION }}
+          echo "===== git diff ====="
+          git diff
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
