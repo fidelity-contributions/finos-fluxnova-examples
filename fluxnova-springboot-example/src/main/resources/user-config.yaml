@@ -1,10 +1,10 @@
 fluxnova:
   user:
-    id: "fluxnova"
+    id: ${TEST_USER_ID}
     firstName: "DefaultUser"
     lastName: "Example"
     email: "default@example.com"
-    password: "Finos@1021"
+    password: ${TEST_USER_PASSWORD}
   groups:
     - id: "fluxnovabpmusers"
       name: "Fluxnoav BPM Users"
